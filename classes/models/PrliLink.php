@@ -5,13 +5,13 @@ if(!defined('ABSPATH'))
 class PrliLink
 {
     var $table_name;
-	#start oneTarek edit
+  #start oneTarek edit
     var $prev_query;
     var $prev_return_type;
     var $prev_link;
-	var $getOneFromSlugCount;
-	#end oneTarek edit
-	
+  var $getOneFromSlugCount;
+  #end oneTarek edit
+  
     function __construct()
     {
       global $wpdb;
@@ -210,20 +210,20 @@ class PrliLink
         $query = "SELECT * FROM {$this->table_name} WHERE slug=%s";
 
       $query = $wpdb->prepare($query, $slug);
-	  #$link = $wpdb->get_row($query, $return_type);
-	  #start oneTarek edit
-	  if($this->prev_query==$query && $this->prev_return_type==$return_type)
-	  {
-	  $link=$this->prev_link;
-	  }
-	  else
-	  {
+    #$link = $wpdb->get_row($query, $return_type);
+    #start oneTarek edit
+    if($this->prev_query==$query && $this->prev_return_type==$return_type)
+    {
+    $link=$this->prev_link;
+    }
+    else
+    {
       $link = $wpdb->get_row($query, $return_type);
-	  $this->prev_link=$link;
-	  $this->prev_return_type=$return_type;
-	  $this->prev_query=$query;
-	  }
-	  #end oneTarek edit
+    $this->prev_link=$link;
+    $this->prev_return_type=$return_type;
+    $this->prev_query=$query;
+    }
+    #end oneTarek edit
       if( $include_stats and $link and $prli_options->extended_tracking == 'count' )
       {
         $link->clicks  = $prli_link_meta->get_link_meta($link->id,'static-clicks',true);
@@ -296,7 +296,7 @@ class PrliLink
         return $pretty_link;
     }
 
-    function is_pretty_link($url, $check_domain=true)
+    public function is_pretty_link($url, $check_domain=true)
     {
       global $prli_blogurl;
 
@@ -317,7 +317,7 @@ class PrliLink
         {
           // Match longest slug -- this is the most common
           $params = (isset($match_val[3])?$match_val[3]:'');
-          if( $pretty_link_found =& $this->is_pretty_link_slug( $match_val[2] ) )
+          if( $pretty_link_found = $this->is_pretty_link_slug( $match_val[2] ) )
             return compact('pretty_link_found','pretty_link_params');
 
           // Trim down the matched link
@@ -333,7 +333,7 @@ class PrliLink
             $new_match_str ="#^{$subdir_str}({$struct})({$matched_link})(.*?)?$#";
 
             $params = (isset($match_val[3])?$match_val:'');
-            if( $pretty_link_found =& $this->is_pretty_link_slug( $match_val[2] ) )
+            if( $pretty_link_found = $this->is_pretty_link_slug( $match_val[2] ) )
               return compact('pretty_link_found','pretty_link_params');
 
             // Trim down the matched link and try again
@@ -347,7 +347,7 @@ class PrliLink
 
     function is_pretty_link_slug($slug)
     {
-	  return apply_filters('prli-check-if-slug', $this->getOneFromSlug( urldecode($slug) ), urldecode($slug));
+    return apply_filters('prli-check-if-slug', $this->getOneFromSlug( urldecode($slug) ), urldecode($slug));
     }
 
     function get_link_min( $id, $return_type = OBJECT )
