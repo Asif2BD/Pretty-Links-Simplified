@@ -104,7 +104,7 @@ function prli_redirect()
   // Remove the trailing slash if there is one
   $request_uri = preg_replace('#/$#','',urldecode($_SERVER['REQUEST_URI']));
 
-  if( $link_info =& $prli_link->is_pretty_link($request_uri,false) )
+  if( $link_info = $prli_link->is_pretty_link($request_uri,false) )
   {
     $params = (isset($link_info['pretty_link_params'])?$link_info['pretty_link_params']:'');
     prli_link_redirect_from_slug( $link_info['pretty_link_found']->slug, $params );
@@ -116,7 +116,7 @@ function prli_link_redirect_from_slug($slug,$param_str)
 {
   global $prli_link, $prli_utils;
 
-  $link =& $prli_link->getOneFromSlug(urldecode($slug));
+  $link = $prli_link->getOneFromSlug(urldecode($slug));
   
   if(isset($link->slug) and !empty($link->slug))
   {
@@ -154,9 +154,7 @@ function prli_dashboard_widget_function() {
 
 // Create the function use in the action hook
 function prli_add_dashboard_widgets() {
-  global $current_user;
-  get_currentuserinfo();
-  if($current_user->user_level >= 8)
+  if(current_user_can( 'update_core' ))
   {
     wp_add_dashboard_widget('prli_dashboard_widget', __('Pretty Link Quick Add', 'pretty-link'), 'prli_dashboard_widget_function');   
 

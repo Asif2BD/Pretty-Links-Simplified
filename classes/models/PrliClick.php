@@ -6,7 +6,7 @@ class PrliClick
 {
     var $table_name;
 
-    function PrliClick()
+    function __construct()
     {
       global $wpdb;
       $this->table_name = "{$wpdb->prefix}prli_clicks";
@@ -29,7 +29,7 @@ class PrliClick
         $exclude_ips = explode(',',$exclude_list);
         for($i = 0; $i < count($exclude_ips); $i++)
         {
-          $exclude_ip = trim(preg_replace('#\*#','%',$exclude_ips[$i]));
+          $exclude_ip = trim(preg_replace('#\*#','%%',$exclude_ips[$i]));
 
           if($i > 0)
             $return_stmt .= ' AND';
@@ -54,7 +54,7 @@ class PrliClick
               break;
             }
 
-            $whitelist_ip = trim(preg_replace('#\*#','%',$whitelist_ips[$i]));
+            $whitelist_ip = trim(preg_replace('#\*#','%%',$whitelist_ips[$i]));
 
             if($i > 0)
               $return_stmt .= ' OR';

@@ -1,13 +1,13 @@
 <?php
 /*
-Plugin Name: Pretty Link ARCom
+Plugin Name: Pretty Link Lite
 Plugin URI: http://blairwilliams.com/pretty-link
-Description: EDITED from original Pretty Link Lite v1.5.6 - Shrink, track and share any URL on the Internet from your WordPress website!
-Version: 1.6.4
-Author: ARCom
-Author URI: http://arcom.com.bd
+Description: Shrink, track and share any URL on the Internet from your WordPress website!
+Version: 1.7.2
+Author: Caseproof
+Author URI: http://caseproof.com
 Text Domain: pretty-link
-Copyright: 2004-2012, Caseproof, LLC
+Copyright: 2004-2015, Caseproof, LLC
 
 GNU General Public License, Free Software Foundation <http://creativecommons.org/licenses/GPL/2.0/>
 This program is free software; you can redistribute it and/or modify
