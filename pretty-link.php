@@ -7,7 +7,7 @@ Version: 1.7.2
 Author: M Asif Rahman
 Author URI: https://asif.im
 Text Domain: pretty-link
-Copyright: 2004-2015, A. R. Communications, LLC
+Copyright: 2004-2016, A. R. Communications, LLC
 
 GNU General Public License, Free Software Foundation <http://creativecommons.org/licenses/GPL/2.0/>
 This program is free software; you can redistribute it and/or modify
